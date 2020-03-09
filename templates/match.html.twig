@@ -125,6 +125,11 @@
                         <td>
                             {{ player.playTime }}’
                         </td>
+                           <td>
+                        {% if player.playerGoals > 0 %}
+                            <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/goal.png">
+                        {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>
