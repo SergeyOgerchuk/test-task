@@ -131,8 +131,11 @@
                                     {% elseif player.playerPenaltyCards >= 2 %}
                                     <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/yellow_red.png">
                                 {% endif %}
-                                {% if player.playerGoals > 0 %}
+                                {% set goals = player.playerGoals %}
+                                {% if goals > 0 %}
+                                {% for i in 1..goals %}
                                     <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/goal.png">
+                                {% endfor %}
                                 {% endif %}
                         </td>
                     </tr>
