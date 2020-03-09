@@ -13,6 +13,10 @@ class Team
     private array $players;
     private string $coach;
     private int $goals;
+    private int $goalkeeperPlayTime;
+    private int $defenderPlayTime;
+    private int $midfielderPlayTime;
+    private int $forwardPlayTime;
 
     public function __construct(string $name, string $country, string $logo, array $players, string $coach)
     {
@@ -24,6 +28,10 @@ class Team
         $this->players = $players;
         $this->coach = $coach;
         $this->goals = 0;
+        $this->goalkeeperPlayTime = 0;
+        $this->defenderPlayTime = 0;
+        $this->midfielderPlayTime = 0;
+        $this->forwardPlayTime = 0;
     }
 
     public function getName(): string
@@ -73,6 +81,43 @@ class Team
         );
     }
 
+    public function getGoalkeeperPlayTime():int {
+        return $this->goalkeeperPlayTime;
+    }
+
+    public function getMidfielderPlayTime():int {
+        return $this->midfielderPlayTime;
+    }
+
+    public function getDefenderPlayTime():int {
+        return $this->defenderPlayTime;
+    }
+
+    public function getForwardPlayTime():int {
+        return $this->forwardPlayTime;
+    }
+
+    public function calculateEveryPositionPlayTime(): void
+    {
+        foreach ($this->players as $player) {
+            
+            switch($player->getPosition()) {
+                case "В":
+                   $this->goalkeeperPlayTime += $player->getPlayTime();
+                break;
+                case "З":
+                    $this->defenderPlayTime += $player->getPlayTime();
+                break;
+                case "П":
+                    $this->midfielderPlayTime += $player->getPlayTime();
+                break;
+                case "Н":
+                    $this->forwardPlayTime += $player->getPlayTime();
+                break;
+            }
+        }
+    }
+
     public function getCoach(): string
     {
         return $this->coach;
@@ -87,7 +132,6 @@ class Team
     {
         return $this->goals;
     }
-
 
     private function assertCorrectPlayers(array $players)
     {

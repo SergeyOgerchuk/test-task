@@ -8,19 +8,23 @@ class Player
 
     private int $number;
     private string $name;
+    private string $position;
     private string $playStatus;
     private int $inMinute;
     private int $outMinute;
     private int $goals;
+    private int $penaltyCards;
 
-    public function __construct(int $number, string $name)
+    public function __construct(int $number, string $name, string $position)
     {
         $this->number = $number;
         $this->name = $name;
+        $this->position = $position;
         $this->playStatus = self::BENCH_PLAY_STATUS;
         $this->inMinute = 0;
         $this->outMinute = 0;
         $this->goals = 0;
+        $this->penaltyCards = 0;
     }
 
     public function getNumber(): int
@@ -57,16 +61,29 @@ class Player
         if($this->inMinute === 1) {
             return $this->outMinute;
         }
-        
+
         return $this->outMinute - $this->inMinute;
     }
 
+    public function getPosition():string {
+        
+        return $this->position;
+    }
+
     public function addGoal():void {
-        $this->goals ++;
+        $this->goals += 1;
     }
 
     public function getPlayerGoals():int {
         return $this->goals;
+    }
+
+    public function addPlayerPenaltyCards(int $card):void {
+        $this->penaltyCards += $card;
+    }
+
+    public function getPlayerPenaltyCards():int {
+        return $this->penaltyCards;
     }
 
     public function goToPlay(int $minute): void

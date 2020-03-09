@@ -125,15 +125,66 @@
                         <td>
                             {{ player.playTime }}’
                         </td>
-                           <td>
-                        {% if player.playerGoals > 0 %}
-                            <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/goal.png">
-                        {% endif %}
+                        <td>
+                        {% if player.playerPenaltyCards == 1 %}
+                                    <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/card.png">
+                                    {% elseif player.playerPenaltyCards >= 2 %}
+                                    <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/yellow_red.png">
+                                {% endif %}
+                                {% if player.playerGoals > 0 %}
+                                    <img src="https://www.soccer.ru/sites/all/themes/newtheme/images/events-icons/goal.png">
+                                {% endif %}
                         </td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
+          <div class="card-body">
+         </table>
+             <table class="table table">
+               <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Общее время для каждой позиции</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                        <td>
+                            Вратарь
+                        </td>
+                        <td>
+                            {{ team.goalkeeperPlayTime }}
+                        </td>
+                       </tr> 
+                        <tr>
+                        <td>
+                            Защитник
+                        </td>
+                        <td>
+                            {{ team.defenderPlayTime }}
+                        </td>
+                       </tr> 
+                        <tr>
+                        <td>
+                            Полузащитник
+                        </td>
+                        <td>
+                            {{ team.midfielderPlayTime }}
+                        </td>
+                       </tr> 
+                        <tr>
+                        <td>
+                            Нападающий
+                        </td>
+                        <td>
+                            {{ team.forwardPlayTime }}
+                        </td>
+                       </tr> 
+                </tbody>
+            </table>
+            </div>
     </div>
 {% endmacro %}
