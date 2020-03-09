@@ -81,27 +81,30 @@ class Team
         );
     }
 
-    public function getGoalkeeperPlayTime():int {
+    public function getGoalkeeperPlayTime():int
+    {
         return $this->goalkeeperPlayTime;
     }
 
-    public function getMidfielderPlayTime():int {
+    public function getMidfielderPlayTime():int
+    {
         return $this->midfielderPlayTime;
     }
 
-    public function getDefenderPlayTime():int {
+    public function getDefenderPlayTime():int
+    {
         return $this->defenderPlayTime;
     }
 
-    public function getForwardPlayTime():int {
+    public function getForwardPlayTime():int
+    {
         return $this->forwardPlayTime;
     }
 
     public function calculateEveryPositionPlayTime(): void
     {
         foreach ($this->players as $player) {
-            
-            switch($player->getPosition()) {
+            switch ($player->getPosition()) {
                 case "В":
                    $this->goalkeeperPlayTime += $player->getPlayTime();
                 break;

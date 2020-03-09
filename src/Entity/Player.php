@@ -54,35 +54,39 @@ class Player
 
     public function getPlayTime(): int
     {
-        if(!$this->outMinute) {
+        if (!$this->outMinute) {
             return 0;
         }
 
-        if($this->inMinute === 1) {
+        if ($this->inMinute === 1) {
             return $this->outMinute;
         }
 
         return $this->outMinute - $this->inMinute;
     }
 
-    public function getPosition():string {
-        
+    public function getPosition():string
+    {
         return $this->position;
     }
 
-    public function addGoal():void {
-        $this->goals += 1;
+    public function addGoal():void
+    {
+        $this->goals ++;
     }
 
-    public function getPlayerGoals():int {
+    public function getPlayerGoals():int
+    {
         return $this->goals;
     }
 
-    public function addPlayerPenaltyCards(int $card):void {
+    public function addPlayerPenaltyCards(int $card):void
+    {
         $this->penaltyCards += $card;
     }
 
-    public function getPlayerPenaltyCards():int {
+    public function getPlayerPenaltyCards():int
+    {
         return $this->penaltyCards;
     }
 
